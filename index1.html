@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>AturPro – Kelola Proyek & Tugas</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- AUTH -->
+    <section id="auth" class="wrap hide">
+      <div class="card auth">
+        <h2 style="text-align: center">AturPro</h2>
+        <div class="tabs">
+          <button class="btn" id="tLogin">Masuk</button
+          ><button class="btn g" id="tReg">Daftar</button>
+        </div>
+        <form id="fLogin" novalidate>
+          <label>Username atau email</label
+          ><input name="id" autocomplete="username" /> <label>Password</label
+          ><input name="pw" type="password" autocomplete="current-password" />
+          <div class="err" id="eLogin"></div>
+          <button class="btn" style="width: 100%">Masuk</button>
+        </form>
+        <form id="fReg" class="hide" novalidate>
+          <label>Username</label><input name="u" autocomplete="username" />
+          <label>Email</label
+          ><input name="e" type="email" autocomplete="email" />
+          <label>Password (min. 6 karakter)</label
+          ><input name="pw" type="password" autocomplete="new-password" />
+          <label>Konfirmasi password</label
+          ><input name="pw2" type="password" autocomplete="new-password" />
+          <div class="err" id="eReg"></div>
+          <button class="btn" style="width: 100%">Buat akun</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- APP -->
+    <section id="app" class="hide">
+      <header>
+        <div class="wrap">
+          <span class="brand">✔ AturPro</span>
+          <nav class="nav row">
+            <button id="nDash">Dashboard</button
+            ><button id="nProj">Proyek</button>
+          </nav>
+          <span class="mu" id="who"></span>
+          <button class="btn g s" id="theme" title="Mode gelap/terang">
+            🌓
+          </button>
+          <button class="btn g s" id="logout">Keluar</button>
+        </div>
+      </header>
+      <main class="wrap" id="main"></main>
+    </section>
+
+    <!-- DIALOGS -->
+    <dialog id="dProj">
+      <form id="fProj" novalidate>
+        <h3 id="dProjT">Proyek</h3>
+        <label>Nama proyek</label><input name="name" maxlength="80" />
+        <div class="err" data-e="name"></div>
+        <label>Deskripsi</label
+        ><textarea name="desc" rows="3" maxlength="500"></textarea>
+        <label>Deadline</label><input name="deadline" type="date" />
+        <div class="err" data-e="deadline"></div>
+        <label>Status</label
+        ><select name="status">
+          <option>Aktif</option>
+          <option>Ditunda</option>
+          <option>Selesai</option>
+        </select>
+        <div class="row" style="justify-content: flex-end; margin-top: 14px">
+          <button type="button" class="btn g" data-close>Batal</button
+          ><button class="btn">Simpan</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="dTask">
+      <form id="fTask" novalidate>
+        <h3 id="dTaskT">Tugas</h3>
+        <label>Judul</label><input name="title" maxlength="100" />
+        <div class="err" data-e="title"></div>
+        <label>Deskripsi</label
+        ><textarea name="desc" rows="3" maxlength="500"></textarea>
+        <label>Deadline</label><input name="deadline" type="date" />
+        <div class="err" data-e="deadline"></div>
+        <label>Status</label
+        ><select name="status">
+          <option>To-do</option>
+          <option>In-Progress</option>
+          <option>Done</option>
+        </select>
+        <label>Lampiran (maks. 200 KB per file)</label
+        ><input name="files" type="file" multiple />
+        <div class="err" data-e="files"></div>
+        <div id="attList"></div>
+        <div class="row" style="justify-content: flex-end; margin-top: 14px">
+          <button type="button" class="btn g" data-close>Batal</button
+          ><button class="btn">Simpan</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="dConf">
+      <h3>Konfirmasi</h3>
+      <p id="confMsg"></p>
+      <div class="row" style="justify-content: flex-end">
+        <button class="btn g" data-close>Batal</button
+        ><button class="btn d" id="confOk">Hapus</button>
+      </div>
+    </dialog>
+
+    <div id="toasts"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
